@@ -1,7 +1,9 @@
 import express, { Application, Request, Response } from "express";
 import { vOAuth } from "./modules/auth";
+import { vTmi } from "./modules/commands";
 import { vDataBase } from "./modules/db";
 import { vQueue } from "./modules/queue";
+import { vTwitchEvent } from "./modules/twitch-event";
 
 const app: Application = express();
 const port: number = 3000;
@@ -18,6 +20,11 @@ app.get("/", (req: Request, res: Response) => {
 
 app.get("/auth/twitch/callback", (req: Request, res: Response) => {
   vOAuth.authCallback(`${req.query.code}`).then(() => {
+    // Connecting to Twitch Chat
+    vTmi.init(vOAuth.oAuthInfo.access_token);
+    // subscribing to Twitch Events
+    vTwitchEvent.init();
+    //redirect user to frontend
     res.redirect("/");
   });
 });

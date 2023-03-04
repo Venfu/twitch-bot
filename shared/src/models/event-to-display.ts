@@ -6,6 +6,7 @@ export interface EventToDisplay {
   messagePlainText?: string;
   colors?: string[];
   animation?: AnimationToDisplay;
+  other?: any;
 }
 
 export interface AnimationToDisplay {

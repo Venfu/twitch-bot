@@ -5,7 +5,6 @@ class Queue {
   items: EventToDisplay[];
 
   constructor(...params: EventToDisplay[]) {
-    console.log(params);
     this.items = [...params];
   }
   enqueue(item: EventToDisplay) {

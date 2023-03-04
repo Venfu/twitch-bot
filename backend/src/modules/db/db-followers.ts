@@ -54,16 +54,15 @@ export let vDatabaseFollowers = {
     );
   },
   /**
-   * Get follower by name
-   * @param name
+   * Get follower by login
+   * @param login
    * @returns
    */
-  getFollowerByName(name: string): Promise<any> {
+  getFollowerByLogin(login: string): Promise<any> {
     return new Promise((res, rej) => {
-      vDataBase.db.exists(`/followers/${name}`).then((followerExists) => {
-        console.log(followerExists);
+      vDataBase.db.exists(`/followers/${login}`).then((followerExists) => {
         if (followerExists) {
-          vDataBase.db.getData(`/followers/${name}`).then((follower) => {
+          vDataBase.db.getData(`/followers/${login}`).then((follower) => {
             res(follower);
           });
         } else {

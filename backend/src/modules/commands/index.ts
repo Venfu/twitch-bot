@@ -6,20 +6,23 @@ let _vTmi = {
   client: new Client({}),
   init(accessToken: string): Promise<boolean> {
     return new Promise((res, rej) => {
-      vTmi.client = new Client({
+      _vTmi.client = new Client({
         identity: {
           username: environment.BOT_USERNAME,
           password: `oauth:${accessToken}`,
         },
         channels: [environment.CHANNEL],
       });
-      vTmi.client.on("message", onMessageHandler);
-      vTmi.client.on("connected", (addr, port) => {
+      _vTmi.client.on("message", onMessageHandler);
+      _vTmi.client.on("connected", (addr, port) => {
         console.log(`* Connected to ${addr}:${port}`);
         res(true);
       });
-      vTmi.client.connect();
+      _vTmi.client.connect();
     });
+  },
+  sendMessage(message: string): void {
+    _vTmi.client.say(`#${environment.CHANNEL}`, message);
   },
 };
 

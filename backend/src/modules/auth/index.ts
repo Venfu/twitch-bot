@@ -2,7 +2,6 @@ import { environment } from "../../environment/environment";
 import { Response } from "express";
 import { vDataBase } from "../db";
 import request from "request";
-import { vTmi } from "../commands";
 
 const URL_TWITCH_AUTHORIZE = "https://id.twitch.tv/oauth2/authorize";
 const URL_TWITCH_TOKEN = "https://id.twitch.tv/oauth2/token";
@@ -72,9 +71,6 @@ export let vOAuth = {
 
           // setup fresh token
           vOAuth.refreshTokenRecursive(data);
-
-          // Connecting to Twitch Chat
-          vTmi.init(data.access_token);
 
           vOAuth.getUserInfo().then((u) => {
             vOAuth.userInfo = u.data[0];
