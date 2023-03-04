@@ -1,5 +1,4 @@
 import express, { Application, Request, Response } from "express";
-import { environment } from "./environment/environment";
 import { vOAuth } from "./modules/auth";
 import { vDataBase } from "./modules/db";
 import { vQueue } from "./modules/queue";
@@ -12,7 +11,8 @@ app.get("/", (req: Request, res: Response) => {
   if (!vOAuth.oAuthInfo.access_token) {
     vOAuth.initOAuth(res);
   } else {
-    res.redirect(environment.URL_FRONTEND);
+    res.send("connected");
+    // res.redirect(environment.URL_FRONTEND);
   }
 });
 

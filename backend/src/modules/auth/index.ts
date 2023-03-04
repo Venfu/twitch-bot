@@ -2,6 +2,7 @@ import { environment } from "../../environment/environment";
 import { Response } from "express";
 import { vDataBase } from "../db";
 import request from "request";
+import { vTmi } from "../commands";
 
 const URL_TWITCH_AUTHORIZE = "https://id.twitch.tv/oauth2/authorize";
 const URL_TWITCH_TOKEN = "https://id.twitch.tv/oauth2/token";
@@ -32,7 +33,7 @@ export let vOAuth = {
 
   /**
    * Redirect user to Twitch IDP
-   * @param res 
+   * @param res
    */
   initOAuth(res: Response): void {
     const url = `${URL_TWITCH_AUTHORIZE}?response_type=code&client_id=${
@@ -44,9 +45,10 @@ export let vOAuth = {
   },
 
   /**
-   * Get AccessToken, RefreshToken
-   * store user's data into database
-   * store user's followers into database
+   * Get AccessToken, RefreshToken -
+   * store user's data into database -
+   * store user's followers into database -
+   * connect to user's Twitch chat
    * @param code code given by IDP
    * @returns
    */
@@ -70,6 +72,9 @@ export let vOAuth = {
 
           // setup fresh token
           vOAuth.refreshTokenRecursive(data);
+
+          // Connecting to Twitch Chat
+          vTmi.init(data.access_token);
 
           vOAuth.getUserInfo().then((u) => {
             vOAuth.userInfo = u.data[0];
@@ -110,8 +115,8 @@ export let vOAuth = {
 
   /**
    * Refresh accessToken
-   * @param tokenInfo 
-   * @returns 
+   * @param tokenInfo
+   * @returns
    */
   refreshToken(tokenInfo: any): Promise<any> {
     return new Promise((res, rej) => {
@@ -139,7 +144,7 @@ export let vOAuth = {
   /**
    * Recursively call RefreshToken function
    * after 75% expires_in time elapsed
-   * @param o 
+   * @param o
    */
   refreshTokenRecursive(o: any): void {
     setTimeout(() => {
