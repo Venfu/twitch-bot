@@ -1,0 +1,4 @@
+node_modules
+dist
+src/environment/environment.ts
+src/database
