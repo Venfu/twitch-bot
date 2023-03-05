@@ -48,7 +48,7 @@ export let vDatabaseFollowers = {
   addFollower(follower: any): Promise<any> {
     follower.followed_at = `${follower.followed_at}`;
     return vDataBase.db.push(
-      `/followers/${follower.from_name}`,
+      `/followers/${follower.from_id}`,
       follower,
       false
     );
@@ -58,11 +58,11 @@ export let vDatabaseFollowers = {
    * @param login
    * @returns
    */
-  getFollowerByLogin(login: string): Promise<any> {
+  getFollowerById(id: string): Promise<any> {
     return new Promise((res, rej) => {
-      vDataBase.db.exists(`/followers/${login}`).then((followerExists) => {
+      vDataBase.db.exists(`/followers/${id}`).then((followerExists) => {
         if (followerExists) {
-          vDataBase.db.getData(`/followers/${login}`).then((follower) => {
+          vDataBase.db.getData(`/followers/${id}`).then((follower) => {
             res(follower);
           });
         } else {

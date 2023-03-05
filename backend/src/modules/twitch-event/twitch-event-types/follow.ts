@@ -37,7 +37,7 @@ export function subscribeToFollowEvents(sessionId: string) {
 
 export function displayFollowEvents(data: any) {
   vDataBase.followers
-    .getFollowerByLogin(data.payload.event.user_login)
+    .getFollowerById(data.payload.event.user_id)
     .then((u) => {
       if (u) return; // if user exists in database
       // Send message to chat
