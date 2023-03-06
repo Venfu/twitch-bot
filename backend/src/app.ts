@@ -1,4 +1,5 @@
 import express, { Application, Request, Response } from "express";
+import { environment } from "./environment/environment";
 import { vOAuth } from "./modules/auth";
 import { vTmi } from "./modules/commands";
 import { vDataBase } from "./modules/db";
@@ -13,8 +14,7 @@ app.get("/", (req: Request, res: Response) => {
   if (!vOAuth.oAuthInfo.access_token) {
     vOAuth.initOAuth(res);
   } else {
-    res.send("connected");
-    // res.redirect(environment.URL_FRONTEND);
+    res.redirect(environment.URL_FRONTEND);
   }
 });
 
@@ -31,6 +31,10 @@ app.get("/auth/twitch/callback", (req: Request, res: Response) => {
 
 app.get("/events", (req: Request, res: Response) => {
   res.send(vQueue.dequeue() || {});
+});
+
+app.get("/connected", (req: Request, res: Response) => {
+  res.send({ connected: !!vOAuth.oAuthInfo.access_token });
 });
 
 // START APP

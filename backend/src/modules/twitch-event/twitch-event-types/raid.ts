@@ -44,5 +44,6 @@ export function displayRaidEvents(data: any) {
     type: "raid",
     from: data.payload.event.from_broadcaster_user_name,
     other: { nbViewers: data.payload.event.viewers },
+    timeout: 10000,
   });
 }

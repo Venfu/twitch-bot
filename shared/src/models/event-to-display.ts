@@ -7,6 +7,7 @@ export interface EventToDisplay {
   colors?: string[];
   animation?: AnimationToDisplay;
   other?: any;
+  timeout?: number;
 }
 
 export interface AnimationToDisplay {

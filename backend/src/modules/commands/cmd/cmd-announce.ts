@@ -7,5 +7,6 @@ export function announce(msg: string, context: any): void {
     message: `${msg.substring(2)}`,
     from: context["display-name"],
     colors: context.color || "",
+    timeout: 10000,
   });
 }

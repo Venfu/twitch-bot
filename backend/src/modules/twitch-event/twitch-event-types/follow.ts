@@ -49,6 +49,7 @@ export function displayFollowEvents(data: any) {
       vQueue.enqueue({
         type: "follow",
         from: data.payload.event.user_name,
+        timeout: 10000
       });
 
       // Add follower to database
