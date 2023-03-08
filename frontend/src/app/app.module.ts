@@ -9,6 +9,7 @@ import { ColorizeDirective } from './directives/colorize.directive';
 import { AnimationsComponent } from './animations/animations.component';
 import { SplatoonDefaultComponent } from './animations/splatoon-default/splatoon-default.component';
 import { EventMessageComponent } from './fragments/event-message/event-message.component';
+import { LastAnnounceComponent } from './fragments/last-announce/last-announce.component';
 
 // Verify that backend is authenticated before running app
 function initilizeApp(http: HttpClient): () => Promise<any> {
@@ -35,6 +36,7 @@ function initilizeApp(http: HttpClient): () => Promise<any> {
     AnimationsComponent,
     SplatoonDefaultComponent,
     EventMessageComponent,
+    LastAnnounceComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [
