@@ -14,9 +14,12 @@ export class ColorizeDirective implements OnInit {
       this.appColorize =
         Colors[Math.floor((Math.random() * Object.keys(Colors).length) / 2)];
     }
+    const color = this.appColorize.match(/^\#/gim)
+      ? this.appColorize.substring(1)
+      : this.appColorize;
     this.appColorize = this.el.nativeElement.setAttribute(
       'style',
-      `color: #${this.appColorize};`
+      `color: #${color};`
     );
   }
 }

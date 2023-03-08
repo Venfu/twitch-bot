@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment.development';
 import { LastFollowerComponent } from './fragments/last-follower/last-follower.component';
 import { ColorizeDirective } from './directives/colorize.directive';
+import { AnimationsComponent } from './animations/animations.component';
+import { SplatoonDefaultComponent } from './animations/splatoon-default/splatoon-default.component';
+import { EventMessageComponent } from './fragments/event-message/event-message.component';
 
 // Verify that backend is authenticated before running app
 function initilizeApp(http: HttpClient): () => Promise<any> {
@@ -25,7 +28,14 @@ function initilizeApp(http: HttpClient): () => Promise<any> {
 }
 
 @NgModule({
-  declarations: [AppComponent, LastFollowerComponent, ColorizeDirective],
+  declarations: [
+    AppComponent,
+    LastFollowerComponent,
+    ColorizeDirective,
+    AnimationsComponent,
+    SplatoonDefaultComponent,
+    EventMessageComponent,
+  ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [
     {

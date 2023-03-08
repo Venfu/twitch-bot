@@ -19,6 +19,7 @@ export class LastFollowerComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventsService.eventsToDisplay$.subscribe((f: EventToDisplay) => {
+      if (f.type != 'follow') return;
       this.lastFollower = f.from || '';
       this.color =
         Colors[Math.floor((Math.random() * Object.keys(Colors).length) / 2)];

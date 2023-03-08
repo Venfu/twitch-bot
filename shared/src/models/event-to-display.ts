@@ -4,7 +4,7 @@ export interface EventToDisplay {
   from?: string;
   to?: string;
   messagePlainText?: string;
-  colors?: string[];
+  color?: string;
   animation?: AnimationToDisplay;
   other?: any;
   timeout?: number;
