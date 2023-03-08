@@ -17,12 +17,15 @@ function initilizeApp(http: HttpClient): () => Promise<any> {
   return () =>
     new Promise((res, rej) => {
       const verifyAppIsAuthenticated = () => {
-        http
-          .get<{ connected: boolean }>(URL_IS_AUTHENTICATED)
-          .subscribe((isAuth: { connected: boolean }) => {
+        http.get<{ connected: boolean }>(URL_IS_AUTHENTICATED).subscribe({
+          next: (isAuth: { connected: boolean }) => {
             if (isAuth.connected) res(true);
             else setTimeout(verifyAppIsAuthenticated, 500);
-          });
+          },
+          error: (err) => {
+            setTimeout(verifyAppIsAuthenticated, 500);
+          },
+        });
       };
       verifyAppIsAuthenticated();
     });

@@ -24,8 +24,24 @@ export class LastFollowerComponent implements OnInit {
       this.color =
         Colors[Math.floor((Math.random() * Object.keys(Colors).length) / 2)];
     });
-    this.backendService.getLastFollower().subscribe((lf) => {
-      this.lastFollower = lf.from_name;
+    this.getLastFollowFromBackend();
+  }
+
+  getLastFollowFromBackend() {
+    this.backendService.getLastFollower().subscribe({
+      next: (lf) => {
+        if (!lf.from_name) {
+          setTimeout(() => {
+            this.getLastFollowFromBackend();
+          }, 500);
+        }
+        this.lastFollower = lf.from_name;
+      },
+      error: (err) => {
+        setTimeout(() => {
+          this.getLastFollowFromBackend();
+        }, 500);
+      },
     });
   }
 }

@@ -13,7 +13,7 @@ app.get("/", (req: Request, res: Response) => {
   if (!vOAuth.oAuthInfo.access_token) {
     vOAuth.initOAuth(res);
   } else {
-    res.send("connected");
+    res.send("");
     // res.redirect(environment.URL_FRONTEND);
   }
 });
@@ -28,17 +28,18 @@ app.get("/auth/twitch/callback", (req: Request, res: Response) => {
     vEventServer.init();
     //redirect user to frontend
     res.redirect("/");
+
+    // Endpoints that require something
+    app.get("/display/last-follower", (req: Request, res: Response) => {
+      vDataBase.followers.getLastFollower().then((o) => {
+        res.send(o);
+      });
+    });
   });
 });
 
 app.get("/connected", (req: Request, res: Response) => {
   res.send({ connected: !!vOAuth.oAuthInfo.access_token });
-});
-
-app.get("/display/last-follower", (req: Request, res: Response) => {
-  vDataBase.followers.getLastFollower().then((o) => {
-    res.send(o);
-  });
 });
 
 // START APP
