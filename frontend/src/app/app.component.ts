@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EventsService } from './services/events.service';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +7,8 @@ import { EventsService } from './services/events.service';
 })
 export class AppComponent implements OnInit {
   title = 'frontend';
-  testDisplayEvent = '';
-  constructor(private eventsService: EventsService) {}
+  game = 'splatoon';
+  constructor() {}
 
-  ngOnInit(): void {
-    this.eventsService.eventsToDisplay$.subscribe((e) => {
-      this.testDisplayEvent = e.type;
-    });
-  }
+  ngOnInit(): void {}
 }

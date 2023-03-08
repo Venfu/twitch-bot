@@ -1,5 +1,4 @@
-import { EventToDisplay } from "../../../../shared/src";
-export * from "../../../../shared/src";
+import { EventToDisplay } from "../../shared";
 
 class Queue {
   items: EventToDisplay[];

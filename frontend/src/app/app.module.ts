@@ -4,17 +4,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment.development';
+import { LastFollowerComponent } from './fragments/last-follower/last-follower.component';
+import { ColorizeDirective } from './directives/colorize.directive';
 
 // Verify that backend is authenticated before running app
 function initilizeApp(http: HttpClient): () => Promise<any> {
-  const URL_IS_AUTHENTICATED = '/connected';
+  const URL_IS_AUTHENTICATED = environment.URL_BACKEND + '/connected';
   return () =>
     new Promise((res, rej) => {
       const verifyAppIsAuthenticated = () => {
         http
-          .get<{ connected: boolean }>(
-            `${environment.URL_BACKEND}${URL_IS_AUTHENTICATED}`
-          )
+          .get<{ connected: boolean }>(URL_IS_AUTHENTICATED)
           .subscribe((isAuth: { connected: boolean }) => {
             if (isAuth.connected) res(true);
             else setTimeout(verifyAppIsAuthenticated, 500);
@@ -25,7 +25,7 @@ function initilizeApp(http: HttpClient): () => Promise<any> {
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LastFollowerComponent, ColorizeDirective],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [
     {
