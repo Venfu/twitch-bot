@@ -4,7 +4,7 @@ import { environment } from "../../../environment/environment";
 import { vOAuth } from "../../auth";
 import { vTmi } from "../../commands";
 import { vDataBase } from "../../db";
-import { vQueue } from "../../queue";
+import { vEventServer } from "../../events-server";
 
 export function subscribeToFollowEvents(sessionId: string) {
   var postData = {
@@ -46,7 +46,8 @@ export function displayFollowEvents(data: any) {
       );
 
       // Send notification
-      vQueue.enqueue({
+      
+      vEventServer.pushEvent({
         type: "follow",
         from: data.payload.event.user_name,
         timeout: 10000

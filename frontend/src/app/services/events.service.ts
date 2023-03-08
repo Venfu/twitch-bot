@@ -3,27 +3,20 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { EventToDisplay } from 'src/shared';
+import { GameService } from './game.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventsService {
-  URI_EVENTS = '/events';
+  ws = new WebSocket(environment.URL_WEBSOCKET_SERVER);
 
   eventsToDisplay$: Subject<EventToDisplay> = new Subject<EventToDisplay>();
 
-  constructor(private http: HttpClient) {
-    this.recursiveCallEvents();
-  }
-
-  private recursiveCallEvents() {
-    this.http
-      .get<EventToDisplay>(`${environment.URL_BACKEND}${this.URI_EVENTS}`)
-      .subscribe((e: EventToDisplay) => {
-        if (e.type) {
-          this.eventsToDisplay$.next(e);
-        }
-        setTimeout(() => this.recursiveCallEvents(), e.timeout || 1000);
-      });
+  constructor(private http: HttpClient, private gameService: GameService) {
+    // this.recursiveCallEvents();
+    this.ws.onmessage = (e) => {
+      this.eventsToDisplay$.next(JSON.parse(e.data));
+    };
   }
 }

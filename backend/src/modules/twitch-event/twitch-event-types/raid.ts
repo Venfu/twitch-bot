@@ -3,7 +3,7 @@ import { URL_EVENTS_SUBSCRIPTION } from ".";
 import { environment } from "../../../environment/environment";
 import { vOAuth } from "../../auth";
 import { vTmi } from "../../commands";
-import { vQueue } from "../../queue";
+import { vEventServer } from "../../events-server";
 
 export function subscribeToRaidEvents(sessionId: string) {
   var postData = {
@@ -40,7 +40,7 @@ export function displayRaidEvents(data: any) {
   );
 
   // Send notification
-  vQueue.enqueue({
+  vEventServer.pushEvent({
     type: "raid",
     from: data.payload.event.from_broadcaster_user_name,
     other: { nbViewers: data.payload.event.viewers },

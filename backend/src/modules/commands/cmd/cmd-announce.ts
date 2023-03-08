@@ -1,12 +1,12 @@
-import { vQueue } from "../../queue";
+import { vEventServer } from "../../events-server";
 
 // Announce
 export function announce(msg: string, context: any): void {
-  vQueue.enqueue({
+  vEventServer.pushEvent({
     type: "announce",
     message: `${msg.substring(2)}`,
     from: context["display-name"],
-    colors: context.color || "",
+    color: context.color || "",
     timeout: 10000,
   });
 }

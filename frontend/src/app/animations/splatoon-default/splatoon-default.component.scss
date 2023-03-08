@@ -1,0 +1,222 @@
+.container-animation {
+  height: 100vh;
+  width: 100vw;
+}
+
+.container-animation {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
+  padding-top: 120px
+}
+
+.body {
+  position: relative;
+  height: 60px;
+  width: 90px;
+  background-color: #ffffff;
+  z-index: 3;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: -77px;
+    height: 150px;
+    width: 75px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    animation: body ease-in-out 1s infinite;
+  }
+
+  &:before {
+    transform: rotate(40deg);
+    left: -35px;
+  }
+
+  &:after {
+    transform: rotate(-40deg);
+    left: 35px; //70
+  }
+}
+
+.eyes {
+  position: relative;
+  z-index: 3;
+  left: -10px;
+  width: 110px;
+}
+
+%eye {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -5px;
+    left: -5px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: #000000;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #000000;
+  }
+}
+
+.eye-left {
+  @extend %eye;
+  position: relative;
+}
+
+.eye-right {
+  @extend %eye;
+  position: relative;
+  left: -10px;
+}
+
+.tentacles {
+  position: relative;
+  top: -31px;
+  left: -22px;
+  z-index: 2;
+}
+
+.tentacle {
+  display: inline-block;
+  height: 90px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #ffffff;
+
+  &:not(first-of-type) {
+    margin-left: -10px;
+  }
+
+  &:nth-child(1) {
+    transform: rotate(30deg);
+    animation: tentacle-left ease-in-out 1s infinite;
+  }
+
+  &:nth-child(2) {
+    transform: rotate(10deg);
+    animation: tentacle-left-inner ease-in-out 1s infinite;
+  }
+
+  &:nth-child(3) {
+    transform: rotate(-10deg);
+    animation: tentacle-right-inner ease-in-out 1s infinite;
+  }
+
+  &:nth-child(4) {
+    transform: rotate(-30deg);
+    animation: tentacle-right ease-in-out 1s infinite;
+  }
+}
+
+/*** BACKGROUND SQUID ***/
+.background > .squid {
+  position: absolute;
+  top: 1000px;
+  opacity: 0.5;
+  transform: scale(0.5);
+  animation: background-squid ease-in-out 5s infinite;
+}
+
+/*** ANIMATIONS ***/
+@keyframes body {
+  0% {
+    border-radius: 50%;
+  }
+
+  50% {
+    border-radius: 47%;
+    height: 155px;
+  }
+
+  100% {
+    border-radius: 50%;
+  }
+}
+
+@keyframes tentacle-left {
+  0% {
+    transform: rotate(35deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+    height: 100px;
+  }
+
+  100% {
+    transform: rotate(35deg);
+  }
+}
+
+@keyframes tentacle-left-inner {
+  0% {
+    transform: rotate(10deg);
+  }
+
+  40% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes tentacle-right-inner {
+  0% {
+    transform: rotate(-10deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes tentacle-right {
+  0% {
+    transform: rotate(-35deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-35deg);
+  }
+}
+
+@keyframes background-squid {
+  from {
+    top: 1000px;
+  }
+
+  to {
+    top: -200px;
+  }
+}
