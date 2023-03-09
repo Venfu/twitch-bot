@@ -4,5 +4,6 @@ export function cmd() {
     !dé <nombre> 🎲 
     !ca 🌐 
     !hug @ 🤗 
-    !clip 🔴 `;
+    !clip 🔴 
+    !bienvenue <message> 🙌`;
 }

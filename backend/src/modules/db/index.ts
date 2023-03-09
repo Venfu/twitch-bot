@@ -1,6 +1,7 @@
 import { JsonDB, Config } from "node-json-db";
 import path from "path";
 import { vDatabaseFollowers } from "./db-followers";
+import { vDatabaseWelcomeViewer } from "./db-welcome-viewer";
 
 export let vDataBase = {
   db: new JsonDB(
@@ -19,4 +20,5 @@ export let vDataBase = {
   },
 
   followers: vDatabaseFollowers,
+  welcomeViewer: vDatabaseWelcomeViewer,
 };

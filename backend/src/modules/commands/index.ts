@@ -1,6 +1,16 @@
 import { Client } from "tmi.js";
 import { environment } from "../../environment/environment";
-import { announce, ca, clip, cmd, hug, rollDice } from "./cmd";
+import {
+  addWelcomeMessage,
+  announce,
+  ca,
+  clip,
+  cmd,
+  hug,
+  isViewerFirstMessage,
+  rollDice,
+  welcomeViewer,
+} from "./cmd";
 
 let _vTmi = {
   client: new Client({}),
@@ -31,6 +41,14 @@ function onMessageHandler(target: any, context: any, msg: string, self: any) {
   if (self) return; // Ignore bot's messages
   msg = msg.trim();
 
+  isViewerFirstMessage(context["user-id"]).then((b) => {
+    if (b) {
+      welcomeViewer(context["user-id"], context["display-name"]).then((m) => {
+        _vTmi.sendMessage(m);
+      });
+    }
+  });
+
   // !cmd = list commands
   if (msg === "!cmd") {
     _vTmi.client.say(target, cmd());
@@ -58,8 +76,13 @@ function onMessageHandler(target: any, context: any, msg: string, self: any) {
     });
   }
 
-  // Moderator commands
+  // !bienvenue = register welcome message for user
+  if (msg.match(/^!bienvenue (.)+/gim)) {
+    addWelcomeMessage(context["user-id"], msg.substring(11).trim());
+  }
+
   if (context.mod || (context.badges && context.badges.broadcaster === "1")) {
+    // Moderator commands
     // !!! : send announce to queue
     if (msg.match(/^\!\!/gim)) {
       announce(msg, context);
