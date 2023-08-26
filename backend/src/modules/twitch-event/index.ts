@@ -8,7 +8,7 @@ import {
   subscribeToSubscribeEvents,
 } from "./twitch-event-types";
 
-const URL_WEBSOCKET = "wss://eventsub-beta.wss.twitch.tv/ws";
+const URL_WEBSOCKET = "wss://eventsub.wss.twitch.tv/ws";
 
 let _vTwitchEvent: any = {
   sessionId: "",

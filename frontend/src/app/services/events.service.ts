@@ -14,7 +14,6 @@ export class EventsService {
   eventsToDisplay$: Subject<EventToDisplay> = new Subject<EventToDisplay>();
 
   constructor(private http: HttpClient, private gameService: GameService) {
-    // this.recursiveCallEvents();
     this.ws.onmessage = (e) => {
       this.eventsToDisplay$.next(JSON.parse(e.data));
     };
