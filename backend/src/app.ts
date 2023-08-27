@@ -4,6 +4,8 @@ import { vTmi } from "./modules/commands";
 import { vDataBase } from "./modules/db";
 import { vEventServer } from "./modules/events-server";
 import { vTwitchEvent } from "./modules/twitch-event";
+import { StreamInformations } from "./shared";
+import { vStreamInformations } from "./modules/stream-informations";
 
 const app: Application = express();
 const port: number = 3000;
@@ -35,6 +37,12 @@ app.get("/auth/twitch/callback", (req: Request, res: Response) => {
         res.send(o);
       });
     });
+
+    app.get("/stream-informations", (req: Request, res: Response) => {
+      vStreamInformations.get().then((streamInfo: StreamInformations) => {
+        res.send(streamInfo)
+      })
+    })
   });
 });
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventToDisplay } from 'src/shared';
 import { EventsService } from '../services/events.service';
-import { GameService } from '../services/game.service';
+import { StreamInformationsService } from '../services/stream-informations.service';
 
 @Component({
   selector: 'app-animations',
@@ -10,33 +10,37 @@ import { GameService } from '../services/game.service';
 })
 export class AnimationsComponent implements OnInit {
   eventToDisplay: { [key: string]: { [key: string]: boolean } } = {
-    splatoon: {
+    'splatoon-3': {
+      default: false,
+    },
+    default: {
       default: false,
     },
   };
 
   constructor(
     private EventsService: EventsService,
-    private gameService: GameService
+    private streamInformations: StreamInformationsService
   ) {}
 
   ngOnInit(): void {
     this.EventsService.eventsToDisplay$.subscribe((e: EventToDisplay) => {
+      console.log(this.streamInformations.game);
       if (e.animation?.animation === 'none' || !e.timeout) return;
 
       // Which event to display ?
-      const displayType = this.eventToDisplay[this.gameService.game][
+      const displayType = this.eventToDisplay[this.streamInformations.game][
         e.animation?.animation || e.type
       ]
         ? e.animation?.animation || e.type
         : 'default';
 
-      this.eventToDisplay[this.gameService.game][displayType] = true;
+      this.eventToDisplay[this.streamInformations.game][displayType] = true;
 
       // Play Audio
       if (!e.animation || !e.animation.sound || e.animation.sound != '0') {
         var audio = new Audio(
-          `/assets/${this.gameService.game}/sounds/${
+          `/assets/${this.streamInformations.game}/sounds/${
             e.animation?.sound || 'default.mp3'
           }`
         );
@@ -45,7 +49,7 @@ export class AnimationsComponent implements OnInit {
 
       // Stop event display
       setTimeout(() => {
-        this.eventToDisplay[this.gameService.game][displayType] = false;
+        this.eventToDisplay[this.streamInformations.game][displayType] = false;
       }, e.timeout);
     });
   }

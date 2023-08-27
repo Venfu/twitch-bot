@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css?family=Sigmar+One");
+body {
+  height: 100vh;
+  background: #44b4d5;
+  font-family: Sigmar One;
+}
+#body {
+  width: 300px;
+  height: 300px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  background: beige;
+  position: absolute;
+  top: 0;
+  bottom: 17%;
+  left: 16%;
+  right: 0;
+  margin: auto;
+  z-index: 1;
+  transform: rotate(-45deg);
+  box-shadow: 1px 2px 12px gray;
+}
+#container {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: scale(0.5) translate(-20%, -150%);
+}
+#face {
+  width: 250px;
+  height: 230px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 15%;
+  left: 16%;
+  right: 0;
+  margin: auto;
+  z-index: 2;
+  border: 2px solid rgba(3, 3, 3, 0.15);
+}
+#eyes {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: black;
+  -webkit-box-reflect: right 95px;
+  -moz-box-reflect: right 95px;
+  position: absolute;
+  top: 0;
+  bottom: 20%;
+  left: 0;
+  right: 9%;
+  border: outset 2px grey;
+  margin: auto;
+  z-index: 3;
+}
+#cheekies {
+  width: 45px;
+  height: 25px;
+  background: lightpink;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 16%;
+  bottom: 3%;
+  margin: auto;
+  z-index: 4;
+  -webkit-box-reflect: right 120px;
+  -moz-box-reflect: right 120px;
+}
+#mouth {
+  width: 125px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 0, 128, 0.8);
+  transform: rotate(90deg);
+  position: absolute;
+  top: 0;
+  bottom: 3%;
+  left: 16%;
+  right: 0;
+  margin: auto;
+  z-index: 4;
+  border: 2px solid;
+}
+#feet {
+  width: 240px;
+  height: 160px;
+  border-radius: 50%;
+  box-shadow: 50px 50px 0 0 lightgreen;
+  position: absolute;
+  top: 12%;
+  left: 0;
+  right: 32%;
+  bottom: 0;
+  margin: auto;
+  -webkit-box-reflect: right 5px;
+  -moz-box-reflect: right 5px;
+}
+#feets {
+  width: 240px;
+  height: 160px;
+  border-radius: 50%;
+  box-shadow: 70px 30px 0 0 darkgreen;
+  position: absolute;
+  top: 5%;
+  left: 0;
+  right: 32%;
+  bottom: 0;
+  margin: auto;
+  -webkit-box-reflect: right 5px;
+  -moz-box-reflect: right 5px;
+  z-index: -1;
+}
+#teardrop {
+  background-color: darkviolet;
+  width: 300px;
+  height: 300px;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  position: relative;
+  box-shadow: 1px 2px 12px gray;
+  cursor: pointer;
+}
+#mouth-top {
+  position: absolute;
+  width: 100px;
+  height: 90px;
+  transform: rotate(187deg);
+  top: 0;
+  bottom: 15%;
+  left: 19%;
+  right: 0;
+  margin: auto;
+  z-index: 5;
+}
+#mouth-top:before,
+#mouth-top:after {
+  position: absolute;
+  content: "";
+  left: 56px;
+  top: 5px;
+  width: 55px;
+  height: 90px;
+  background: white;
+  -moz-border-radius: 50px 50px 0 0;
+  border-radius: 50px 50px 0 0;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: 0 100%;
+  -moz-transform-origin: 0 100%;
+  -ms-transform-origin: 0 100%;
+  -o-transform-origin: 0 100%;
+  transform-origin: 13% 100%;
+}
+#mouth-top:after {
+  left: 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+}
+
+#talkbubble {
+  width: 160px;
+  height: 140px;
+  background: rgba(255, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  bottom: 75%;
+  left: 90%;
+  right: 0;
+  margin: auto;
+  transform: rotate(-30deg);
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+#talkbubble:before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 45px;
+  width: 0;
+  height: 0;
+  border-top: 23px solid transparent;
+  border-right: 33px solid rgba(255, 0, 0, 0.7);
+  border-bottom: 23px solid transparent;
+}

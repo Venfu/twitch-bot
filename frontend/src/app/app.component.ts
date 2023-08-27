@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService } from './services/game.service';
+import { StreamInformationsService } from './services/stream-informations.service';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +7,14 @@ import { GameService } from './services/game.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'frontend';
   game = '';
 
-  constructor(private gameService: GameService) {}
+  constructor(private streamInformationsService: StreamInformationsService) {}
 
   ngOnInit(): void {
-    this.game = this.gameService.game;
+    this.game = this.streamInformationsService.game;
+    this.streamInformationsService.gameChange.subscribe((o) => {
+      if (o) this.game = this.streamInformationsService.game;
+    });
   }
 }

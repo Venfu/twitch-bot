@@ -12,19 +12,28 @@
 // FONTS
 @font-face {
   font-family: "splatoon";
-  src: url("./assets/splatoon/font/primary.ttf");
+  src: url("./assets/splatoon-3/font/primary.ttf");
+}
+@font-face {
+  font-family: "default";
+  src: url("./assets/default/font/primary.ttf");
 }
 
 body {
   background-color: #c3c3c3;
   color: #fff;
-  font-size: 20px;
   text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1px 1px #000,
-    -1px -1px #000, 1px -1px #000, -1px 1px #000;
+  -1px -1px #000, 1px -1px #000, -1px 1px #000;
 }
 
-.splatoon {
+.splatoon-3 {
+  font-size: 20px;
   font-family: "splatoon";
+}
+
+.default {
+  font-size: 25px;
+  font-family: "default"
 }
 
 span {padding: 0 10px;}
