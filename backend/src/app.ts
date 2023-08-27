@@ -6,6 +6,7 @@ import { vEventServer } from "./modules/events-server";
 import { vTwitchEvent } from "./modules/twitch-event";
 import { StreamInformations } from "./shared";
 import { vStreamInformations } from "./modules/stream-informations";
+import { vChat } from "./modules/chat";
 
 const app: Application = express();
 const port: number = 3000;
@@ -22,8 +23,10 @@ app.get("/", (req: Request, res: Response) => {
 
 app.get("/auth/twitch/callback", (req: Request, res: Response) => {
   vOAuth.authCallback(`${req.query.code}`).then(() => {
-    // Connecting to Twitch Chat
+    // Connecting to Twitch Chat (Commands)
     vTmi.init(vOAuth.oAuthInfo.access_token);
+    // Connecting to Twitch Chat (DisplayChat)
+    vChat.init(vOAuth.oAuthInfo.access_token);
     // Subscribing to Twitch Events
     vTwitchEvent.init();
     // Init events server (websocket)

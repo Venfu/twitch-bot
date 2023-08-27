@@ -11,6 +11,8 @@ import { SplatoonDefaultComponent } from './animations/splatoon-default/splatoon
 import { EventMessageComponent } from './fragments/event-message/event-message.component';
 import { LastAnnounceComponent } from './fragments/last-announce/last-announce.component';
 import { DefaultComponent } from './animations/default/default.component';
+import { LiveChatComponent } from './fragments/live-chat/live-chat.component';
+import { LiveChatMessageComponent } from './fragments/live-chat/live-chat-message/live-chat-message.component';
 
 // Verify that backend is authenticated before running app
 function initilizeApp(http: HttpClient): () => Promise<any> {
@@ -42,6 +44,8 @@ function initilizeApp(http: HttpClient): () => Promise<any> {
     EventMessageComponent,
     LastAnnounceComponent,
     DefaultComponent,
+    LiveChatComponent,
+    LiveChatMessageComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [
