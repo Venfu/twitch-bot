@@ -1,7 +1,6 @@
 import { Client } from "tmi.js";
 import { environment } from "../../environment/environment";
 import {
-  addWelcomeMessage,
   announce,
   ca,
   clip,
@@ -43,9 +42,10 @@ function onMessageHandler(target: any, context: any, msg: string, self: any) {
 
   isViewerFirstMessage(context["user-id"]).then((b) => {
     if (b) {
-      welcomeViewer(context["user-id"], context["display-name"]).then((m) => {
-        _vTmi.sendMessage(m);
-      });
+      vTmi.client.say(
+        target,
+        welcomeViewer(context["user-id"], context["display-name"])
+      );
     }
   });
 
@@ -74,11 +74,6 @@ function onMessageHandler(target: any, context: any, msg: string, self: any) {
     clip(+msg.substring(6)).then((url) => {
       _vTmi.client.say(target, url);
     });
-  }
-
-  // !bienvenue = register welcome message for user
-  if (msg.match(/^!bienvenue (.)+/gim)) {
-    addWelcomeMessage(context["user-id"], msg.substring(11).trim());
   }
 
   if (context.mod || (context.badges && context.badges.broadcaster === "1")) {
