@@ -9,7 +9,7 @@ import { ChatMessage } from 'src/shared';
 })
 export class LiveChatComponent implements OnInit {
   ws = new WebSocket(environment.URL_WEBSOCKET_LIVE_CHAT);
-  message: ChatMessage | undefined;
+  messages: ChatMessage[] = [];
 
   chat: any; // TEST A RETIRER
 
@@ -18,6 +18,7 @@ export class LiveChatComponent implements OnInit {
   ngOnInit(): void {
     this.ws.onmessage = (e) => {
       const m = JSON.parse(e.data);
+      this.messages.push(m);
       this.chat = m;
     };
   }

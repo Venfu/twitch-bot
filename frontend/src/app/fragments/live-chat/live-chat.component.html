@@ -1,3 +1,4 @@
 <p>live-chat works!</p>
-<pre>{{ chat | json }}</pre>
-
+<ng-container *ngFor="let msg of messages">
+  <app-live-chat-message [message]="msg" *ngIf="msg"></app-live-chat-message>
+</ng-container>

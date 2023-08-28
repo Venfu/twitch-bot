@@ -11,6 +11,7 @@ export class StreamInformationsService {
   URL_STREAM_INFORMATIONS = environment.URL_BACKEND + '/stream-informations';
 
   get game(): string {
+    if (!this._streamInformations) return 'default';
     const g = this._streamInformations.game_name || '';
     return this.gameList.includes(g) ? this.kebabCase(g) : 'default';
   }
@@ -29,6 +30,8 @@ export class StreamInformationsService {
       .get<StreamInformations>(this.URL_STREAM_INFORMATIONS)
       .subscribe((si: StreamInformations) => {
         this._streamInformations = si;
+        if (!si) return;
+        
         if (this.newGame !== si.game_name) {
           this.newGame = si.game_name;
           this.gameChange.next(true);
