@@ -18,7 +18,7 @@ let _vChat = {
       });
       _vChat.client.on("message", onMessageHandler);
       _vChat.client.on("connected", (addr, port) => {
-        console.log(`* Connected to ${addr}:${port}`);
+        console.log(`* Connected to ${addr}:${port} - LiveChat`);
         _vChat.wss.on("connection", (ws) => {
           ws.on("error", console.error);
           _vChat.ws.push(ws);

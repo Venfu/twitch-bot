@@ -24,7 +24,7 @@ let _vTmi = {
       });
       _vTmi.client.on("message", onMessageHandler);
       _vTmi.client.on("connected", (addr, port) => {
-        console.log(`* Connected to ${addr}:${port}`);
+        console.log(`* Connected to ${addr}:${port} - Commands`);
         res(true);
       });
       _vTmi.client.connect();
