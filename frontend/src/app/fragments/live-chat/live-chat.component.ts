@@ -20,6 +20,9 @@ export class LiveChatComponent implements OnInit {
       const m = JSON.parse(e.data);
       this.messages.push(m);
       this.chat = m;
+      setTimeout(() => {
+        window.scrollTo(0, document.body.scrollHeight);
+      }, 200);
     };
   }
 

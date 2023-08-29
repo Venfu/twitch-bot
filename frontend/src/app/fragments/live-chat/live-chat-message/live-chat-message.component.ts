@@ -16,6 +16,7 @@ export class LiveChatMessageComponent implements OnInit {
     this._userPicture = m.userPicture;
     this._badges = m.formatedBadges;
   }
+  @Input() displayUser: boolean = true;
 
   _msg: string = '';
   _userName: string = '';
