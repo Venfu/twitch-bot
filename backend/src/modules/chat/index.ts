@@ -1,5 +1,4 @@
 import { Client } from "tmi.js";
-import { environment } from "../../environment/environment";
 import { vOAuth } from "../auth";
 
 let _vChat = {
@@ -9,10 +8,10 @@ let _vChat = {
     return new Promise((res, rej) => {
       _vChat.client = new Client({
         identity: {
-          username: environment.BOT_USERNAME,
+          username: vOAuth.userInfo.display_name,
           password: `oauth:${vOAuth.oAuthInfo.access_token}`,
         },
-        channels: [environment.CHANNEL],
+        channels: [vOAuth.userInfo.login],
       });
       _vChat.client.on("connected", (addr, port) => {
         console.log(`* Connected to ${addr}:${port}`);
@@ -23,7 +22,7 @@ let _vChat = {
     });
   },
   sendMessage(message: string): void {
-    _vChat.client.say(`#${environment.CHANNEL}`, message);
+    _vChat.client.say(`#${vOAuth.userInfo.login}`, message);
   },
   subscribeMessageHandler(v: any): void {
     _vChat.subscriptionMessageHandler.push(v);
