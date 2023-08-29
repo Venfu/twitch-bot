@@ -5,6 +5,7 @@ import request from "request";
 
 const URL_TWITCH_AUTHORIZE = "https://id.twitch.tv/oauth2/authorize";
 const URL_TWITCH_TOKEN = "https://id.twitch.tv/oauth2/token";
+environment.URL_CALLBACK_BASE = environment.URL_CALLBACK_BASE || 'http://localhost:3000'
 const URL_CALLBACK = `${environment.URL_CALLBACK_BASE}/auth/twitch/callback`;
 
 export let vOAuth = {
