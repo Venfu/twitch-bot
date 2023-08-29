@@ -11,7 +11,9 @@ import {
 import { vChat } from "..";
 
 let _vCmd = {
-  onMessageHandler: onMessageHandler,
+  init() {
+    vChat.subscribeMessageHandler(onMessageHandler);
+  },
 };
 
 // Functions

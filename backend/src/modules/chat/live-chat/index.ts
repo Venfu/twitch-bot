@@ -3,6 +3,7 @@ import { WebSocketServer, WebSocket } from "ws";
 import { ChatMessage } from "../../../shared";
 import request from "request";
 import { vOAuth } from "../../auth";
+import { vChat } from "..";
 
 const URL_API_EMOTE: string = "https://static-cdn.jtvnw.net/emoticons/v2/";
 const URL_API_USER: string = "https://api.twitch.tv/helix/users";
@@ -16,8 +17,9 @@ let _vLiveChat = {
   ws: [] as WebSocket[],
   badges: [],
   init(): Promise<boolean> {
-    initBadgesCache();
     return new Promise((res, rej) => {
+      vChat.subscribeMessageHandler(onMessageHandler);
+      initBadgesCache();
       _vLiveChat.wss.on("connection", (ws) => {
         ws.on("error", console.error);
         _vLiveChat.ws.push(ws);
@@ -25,7 +27,6 @@ let _vLiveChat = {
       });
     });
   },
-  onMessageHandler: onMessageHandler,
 };
 
 function onMessageHandler(target: any, context: any, msg: string, self: any) {

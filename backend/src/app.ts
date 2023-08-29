@@ -29,6 +29,8 @@ app.get("/auth/twitch/callback", (req: Request, res: Response) => {
     vChat.init().then((e) => {
       // Start WebSocket Server (LiveChat)
       vLiveChat.init();
+      // Start Command listener
+      vCmd.init();
     });
     // Subscribing to Twitch Events
     vTwitchEvent.init();

@@ -1,11 +1,10 @@
 import { Client } from "tmi.js";
 import { environment } from "../../environment/environment";
 import { vOAuth } from "../auth";
-import { vCmd } from "./commands";
-import { vLiveChat } from "./live-chat";
 
 let _vChat = {
   client: new Client({}),
+  subscriptionMessageHandler: new Array<any>(),
   init(): Promise<boolean> {
     return new Promise((res, rej) => {
       _vChat.client = new Client({
@@ -19,18 +18,22 @@ let _vChat = {
         console.log(`* Connected to ${addr}:${port}`);
         res(true);
       });
-      vChat.client.on("message", onMessageHandler);
+      _vChat.client.on("message", onMessageHandler);
       _vChat.client.connect();
     });
   },
   sendMessage(message: string): void {
-    vChat.client.say(`#${environment.CHANNEL}`, message);
+    _vChat.client.say(`#${environment.CHANNEL}`, message);
+  },
+  subscribeMessageHandler(v: any): void {
+    _vChat.subscriptionMessageHandler.push(v);
   },
 };
 
 function onMessageHandler(target: any, context: any, msg: string, self: any) {
-  vCmd.onMessageHandler(target, context, msg, self);
-  vLiveChat.onMessageHandler(target, context, msg, self);
+  _vChat.subscriptionMessageHandler.forEach((v) => {
+    v(target, context, msg, self);
+  });
 }
 
 export let vChat = _vChat;
