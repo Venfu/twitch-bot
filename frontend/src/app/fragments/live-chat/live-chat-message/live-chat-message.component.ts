@@ -21,7 +21,7 @@ export class LiveChatMessageComponent implements OnInit {
   _userName: string = '';
   _userPicture: string = '';
   _userColor: string = '';
-  _badges: string = '';
+  _badges: string[] = [];
   _time: string = '';
 
   ngOnInit(): void {}

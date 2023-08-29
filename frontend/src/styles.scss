@@ -15,8 +15,8 @@
   src: url("./assets/splatoon-3/font/primary.ttf");
 }
 @font-face {
-  font-family: "default";
-  src: url("./assets/default/font/primary.ttf");
+  font-family: "overwatch";
+  src: url("./assets/overwatch-2/font/primary.ttf");
 }
 
 body {
@@ -31,9 +31,9 @@ body {
   font-family: "splatoon";
 }
 
-.default {
+.overwatch-2 {
   font-size: 25px;
-  font-family: "default"
+  font-family: "overwatch"
 }
 
 span {padding: 0 10px;}

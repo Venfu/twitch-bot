@@ -13,6 +13,7 @@ import { LastAnnounceComponent } from './fragments/last-announce/last-announce.c
 import { DefaultComponent } from './animations/default/default.component';
 import { LiveChatComponent } from './fragments/live-chat/live-chat.component';
 import { LiveChatMessageComponent } from './fragments/live-chat/live-chat-message/live-chat-message.component';
+import { OverwatchDefaultComponent } from './animations/overwatch-default/overwatch-default.component';
 
 // Verify that backend is authenticated before running app
 function initilizeApp(http: HttpClient): () => Promise<any> {
@@ -46,6 +47,7 @@ function initilizeApp(http: HttpClient): () => Promise<any> {
     DefaultComponent,
     LiveChatComponent,
     LiveChatMessageComponent,
+    OverwatchDefaultComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [

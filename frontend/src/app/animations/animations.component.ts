@@ -13,6 +13,9 @@ export class AnimationsComponent implements OnInit {
     'splatoon-3': {
       default: false,
     },
+    'overwatch-2': {
+      default: false,
+    },
     default: {
       default: false,
     },

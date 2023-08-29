@@ -137,13 +137,13 @@ function formatChatMessage(context: any, msg: string): Promise<ChatMessage> {
   });
 }
 
-function getBadges(badges: any): string {
-  if (!badges) return "";
-  let formatedBadges = "";
+function getBadges(badges: any): string[] {
+  if (!badges) return [];
+  let formatedBadges = [];
   for (const badge in badges) {
     let bTmp: any = _vChat.badges.find((b: any) => b["set_id"] === badge);
     bTmp = bTmp?.versions.find((b: any) => b.id === badges[badge]);
-    formatedBadges += `<img src="${bTmp?.image_url_1x}">`;
+    formatedBadges.push(bTmp?.image_url_1x);
   }
   return formatedBadges;
 }

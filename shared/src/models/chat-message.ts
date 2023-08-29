@@ -5,7 +5,7 @@ export interface ChatMessage {
   userPicture: string;
   userColor: string;
   emotes: { [key: string]: string[] } | null;
-  formatedBadges: string;
+  formatedBadges: string[];
   badges: { [key: string]: string } | null;
   timestamp: string;
 }
