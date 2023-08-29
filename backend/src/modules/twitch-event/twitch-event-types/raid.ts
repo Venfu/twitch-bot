@@ -2,8 +2,8 @@ import request from "request";
 import { URL_EVENTS_SUBSCRIPTION } from ".";
 import { environment } from "../../../environment/environment";
 import { vOAuth } from "../../auth";
-import { vTmi } from "../../commands";
 import { vEventServer } from "../../events-server";
+import { vChat } from "../../chat";
 
 export function subscribeToRaidEvents(sessionId: string) {
   var postData = {
@@ -28,14 +28,14 @@ export function subscribeToRaidEvents(sessionId: string) {
     },
   };
   request(clientServerOptions, function (error, response) {
-    console.log("Subscribe to Raid Events", response.body);
+    console.log("Subscribe to Raid Events");
     return;
   });
 }
 
 export function displayRaidEvents(data: any) {
   // Send message to chat
-  vTmi.sendMessage(
+  vChat.sendMessage(
     `Merci pour le raid ${data.payload.event.from_broadcaster_user_name} ❤️❤️❤️`
   );
 

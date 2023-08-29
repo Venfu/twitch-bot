@@ -2,9 +2,9 @@ import request from "request";
 import { URL_EVENTS_SUBSCRIPTION } from ".";
 import { environment } from "../../../environment/environment";
 import { vOAuth } from "../../auth";
-import { vTmi } from "../../commands";
 import { vDataBase } from "../../db";
 import { vEventServer } from "../../events-server";
+import { vChat } from "../../chat";
 
 export function subscribeToFollowEvents(sessionId: string) {
   var postData = {
@@ -30,7 +30,7 @@ export function subscribeToFollowEvents(sessionId: string) {
     },
   };
   request(clientServerOptions, function (error, response) {
-    console.log("Subscribe to Follow Events", response.body);
+    console.log("Subscribe to Follow Events");
     return;
   });
 }
@@ -41,7 +41,7 @@ export function displayFollowEvents(data: any) {
     .then((u) => {
       if (u) return; // if user exists in database
       // Send message to chat
-      vTmi.sendMessage(
+      vChat.sendMessage(
         `Merci pour le follow ${data.payload.event.user_name} ❤️❤️❤️`
       );
 

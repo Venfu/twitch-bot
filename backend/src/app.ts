@@ -1,11 +1,12 @@
 import express, { Application, Request, Response } from "express";
 import { vOAuth } from "./modules/auth";
-import { vTmi } from "./modules/commands";
+import { vCmd } from "./modules/chat/commands";
 import { vDataBase } from "./modules/db";
 import { vEventServer } from "./modules/events-server";
 import { vTwitchEvent } from "./modules/twitch-event";
 import { StreamInformations } from "./shared";
 import { vStreamInformations } from "./modules/stream-informations";
+import { vLiveChat } from "./modules/chat/live-chat";
 import { vChat } from "./modules/chat";
 
 const app: Application = express();
@@ -22,14 +23,16 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.get("/auth/twitch/callback", (req: Request, res: Response) => {
+  // oAuth connection
   vOAuth.authCallback(`${req.query.code}`).then(() => {
-    // Connecting to Twitch Chat (Commands)
-    vTmi.init(vOAuth.oAuthInfo.access_token);
-    // Connecting to Twitch Chat (DisplayChat)
-    vChat.init(vOAuth.oAuthInfo.access_token);
+    // Tmi connection
+    vChat.init().then((e) => {
+      // Start WebSocket Server (LiveChat)
+      vLiveChat.init();
+    });
     // Subscribing to Twitch Events
     vTwitchEvent.init();
-    // Init events server (websocket)
+    // Start WebSocket Server (Events)
     vEventServer.init();
     //redirect user to frontend
     res.redirect("/");
@@ -43,9 +46,9 @@ app.get("/auth/twitch/callback", (req: Request, res: Response) => {
 
     app.get("/stream-informations", (req: Request, res: Response) => {
       vStreamInformations.get().then((streamInfo: StreamInformations) => {
-        res.send(streamInfo)
-      })
-    })
+        res.send(streamInfo);
+      });
+    });
   });
 });
 

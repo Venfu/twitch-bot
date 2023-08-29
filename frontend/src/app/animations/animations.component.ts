@@ -28,7 +28,6 @@ export class AnimationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.EventsService.eventsToDisplay$.subscribe((e: EventToDisplay) => {
-      console.log(this.streamInformations.game);
       if (e.animation?.animation === 'none' || !e.timeout) return;
 
       // Which event to display ?

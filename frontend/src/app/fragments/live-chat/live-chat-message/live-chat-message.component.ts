@@ -13,7 +13,7 @@ export class LiveChatMessageComponent implements OnInit {
     this._userColor = m.userColor;
     this._userName = m.userName;
     this._msg = m.formatedMessage;
-    this._userPicture = m.userPicture;
+    this._userPicture = m.userPicture || `/assets/twitch/default-avatar.png`;
     this._badges = m.formatedBadges;
   }
   @Input() displayUser: boolean = true;
@@ -29,7 +29,9 @@ export class LiveChatMessageComponent implements OnInit {
 
   displayTimestamp(m: ChatMessage) {
     const date = new Date(parseInt(m.timestamp, 10));
-    console.log(date);
-    this._time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    this._time = `${date.getHours().toString().padStart(2, '0')}:${date
+      .getMinutes()
+      .toString()
+      .padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
   }
 }
