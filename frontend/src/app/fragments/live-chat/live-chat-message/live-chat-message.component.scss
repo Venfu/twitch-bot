@@ -1,3 +1,12 @@
+small.time {
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  font-weight: 600;
+  transform: translate(0, -50%);
+}
+
 .message-animation {
   animation-name: received;
   animation-duration: 0.7s;
