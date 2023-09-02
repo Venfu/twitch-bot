@@ -8,6 +8,7 @@ import { StreamInformations } from "./shared";
 import { vStreamInformations } from "./modules/stream-informations";
 import { vLiveChat } from "./modules/chat/live-chat";
 import { vChat } from "./modules/chat";
+import { vWords } from "./modules/chat/game-words";
 
 const app: Application = express();
 const port: number = 3000;
@@ -31,6 +32,8 @@ app.get("/auth/twitch/callback", (req: Request, res: Response) => {
       vLiveChat.init();
       // Start Command listener
       vCmd.init();
+      // Start Game Words listener
+      vWords.init();
     });
     // Subscribing to Twitch Events
     vTwitchEvent.init();

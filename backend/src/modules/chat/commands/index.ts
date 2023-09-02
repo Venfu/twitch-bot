@@ -9,6 +9,7 @@ import {
   welcomeViewer,
 } from "./cmd";
 import { vChat } from "..";
+import { vWords } from "../game-words";
 
 let _vCmd = {
   init() {
@@ -67,6 +68,9 @@ function onMessageHandler(
     // !!! : send announce to queue
     if (msg.match(/^\!\!/gim)) {
       announce(msg, context);
+    }
+    if (msg.match(/^\!words start( [0-9]{1,2})?$/gim)) {
+      if (!vWords.active) vWords.start(parseInt(msg.substring(13)));
     }
   }
 }
