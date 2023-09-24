@@ -17,7 +17,7 @@ export let vDatabaseFollowers = {
     var cursor = pagination ? `&after=${pagination.cursor}` : "";
     request(
       {
-        uri: `https://api.twitch.tv/helix/users/follows?to_id=${vOAuth.userInfo.id}${cursor}`,
+        uri: `https://api.twitch.tv/helix/channels/followers?broadcaster_id=${vOAuth.userInfo.id}${cursor}`,
         method: "GET",
         headers: {
           "Client-ID": environment.TWITCH_CLIENT_ID,
@@ -26,6 +26,7 @@ export let vDatabaseFollowers = {
         },
       },
       (err, response, data) => {
+        console.log(data)
         data = JSON.parse(data);
         data.data.forEach((e: FollowerInfo) => {
           vDatabaseFollowers.addFollower(e);
@@ -47,7 +48,7 @@ export let vDatabaseFollowers = {
    */
   addFollower(follower: FollowerInfo): Promise<void> {
     follower.followed_at = `${follower.followed_at}`;
-    return vDataBase.db.push(`/followers/${follower.from_id}`, follower, false);
+    return vDataBase.db.push(`/followers/${follower.user_id}`, follower, false);
   },
   /**
    * Get follower by login

@@ -55,12 +55,9 @@ export function displayFollowEvents(data: any) {
 
       // Add follower to database
       vDataBase.followers.addFollower({
-        from_id: data.payload.event.user_id,
-        from_login: data.payload.event.user_login,
-        from_name: data.payload.event.user_name,
-        to_id: data.payload.event.broadcaster_user_id,
-        to_login: data.payload.event.broadcaster_user_login,
-        to_name: data.payload.event.broadcaster_user_name,
+        user_id: data.payload.event.user_id,
+        user_login: data.payload.event.user_login,
+        user_name: data.payload.event.user_name,
         followed_at: data.payload.event.followed_at,
       });
     });

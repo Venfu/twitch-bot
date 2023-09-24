@@ -30,12 +30,12 @@ export class LastFollowerComponent implements OnInit {
   getLastFollowFromBackend() {
     this.backendService.getLastFollower().subscribe({
       next: (lf) => {
-        if (!lf.from_name) {
+        if (!lf.user_name) {
           setTimeout(() => {
             this.getLastFollowFromBackend();
           }, 500);
         }
-        this.lastFollower = lf.from_name;
+        this.lastFollower = lf.user_name;
       },
       error: (err) => {
         setTimeout(() => {
