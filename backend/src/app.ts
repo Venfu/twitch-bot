@@ -90,6 +90,8 @@ app.get("/connected", (req: Request, res: Response) => {
   res.send({ connected: !!vOAuth.oAuthInfo.access_token });
 });
 
+app.use("/public", express.static(__dirname + "/../public"));
+
 // START APP
 vDataBase.initDb().then(() => {
   app.listen(port, function () {
