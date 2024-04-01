@@ -8,7 +8,6 @@ let _eventsServer = {
   TIMEOUT: 5000,
   init(): Promise<void> {
     setInterval(() => {
-      console.log("events", _eventsServer.events.length);
       if (!_eventsServer.events.length || !_eventsServer.ws.length) return;
       const event = _eventsServer.events.shift();
       _eventsServer.ws.forEach((w: any) => {

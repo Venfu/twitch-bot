@@ -9,12 +9,9 @@ import { vLiveChat } from "./modules/live-chat";
 import { vChat } from "./core/chat";
 import { vWords } from "./modules/game-words";
 import { vWelcomeViewer } from "./modules/welcome-viewer";
-import { vFollowers } from "./modules/twitch-events/follow";
-import { vDatabaseFollowers } from "./modules/twitch-events/follow/db-followers";
-import { vRaids } from "./modules/twitch-events/raid";
 import { vCmd } from "./core/commands";
-import { vSub } from "./modules/twitch-events/subscribe";
 import { vCustomCmd } from "./modules/commands";
+import { vTwitchEventsSubscriptions } from "./modules/twitch-events-subscriptions";
 
 const app: Application = express();
 const port: number = 3000;
@@ -56,19 +53,11 @@ app.get("/auth/twitch/callback", async (req: Request, res: Response) => {
   await vLiveChat.init();
   console.log("LiveChat ready");
 
-  // Init followers
-  await vFollowers.init();
-  console.log("Followers initialized");
+  // Init Twitch Events Subscriptions
+  await vTwitchEventsSubscriptions.init();
+  console.log("Twitch Events Subscriptions ready");
 
-  // Init raids
-  await vRaids.init();
-  console.log("Raids initialized");
-
-  // Init Sub
-  await vSub.init();
-  console.log("Sub initialized");
-
-  // init Custom Commands
+  // Init Custom Commands
   await vCustomCmd.init();
   console.log("Custom Commands initialized");
 
@@ -85,7 +74,7 @@ app.get("/auth/twitch/callback", async (req: Request, res: Response) => {
 
   // Endpoints that require something
   app.get("/display/last-follower", (req: Request, res: Response) => {
-    vDatabaseFollowers.getLastFollower().then((o) => {
+    vTwitchEventsSubscriptions.vFollowers.getLastFollower().then((o) => {
       res.send(o);
     });
   });

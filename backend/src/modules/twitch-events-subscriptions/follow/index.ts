@@ -1,4 +1,5 @@
 import { vTwitchEvent } from "../../../core/twitch-events";
+import { FollowerInfo } from "../../../shared";
 import { vDatabaseFollowers } from "./db-followers";
 import { displayFollowEvents, subscribeToFollowEvents } from "./event-follow";
 
@@ -9,6 +10,9 @@ let _vFollowers = {
       vTwitchEvent.notifications.push((json: any) => displayFollowEvents(json));
       vDatabaseFollowers.initFollowers(res);
     });
+  },
+  getLastFollower(): Promise<FollowerInfo> {
+    return vDatabaseFollowers.getLastFollower();
   },
 };
 
