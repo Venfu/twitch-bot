@@ -92,6 +92,15 @@ app.get("/connected", (req: Request, res: Response) => {
 
 app.use("/public", express.static(__dirname + "/../public"));
 
+app.get("/change", (req: Request, res: Response) => {
+  vEventServer.pushEvent({
+    type: "test",
+    message: "Test",
+    timeout: 5000,
+  });
+  res.send("ok");
+});
+
 // START APP
 vDataBase.initDb().then(() => {
   app.listen(port, function () {

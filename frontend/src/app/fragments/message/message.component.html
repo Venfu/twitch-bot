@@ -1,0 +1,12 @@
+@if (message.type !== 'none') {
+<div class="h3 text-center">
+  @if(message.type === 'raid') {
+  <app-raid [message]="message"></app-raid>
+  } @else if (message.type==='follow') {
+  <app-raid [message]="message"></app-raid>
+  } @else if (message.type==='subscribe') {
+  <app-raid [message]="message"></app-raid>
+  }
+  <div>{{ message.message }}</div>
+</div>
+}

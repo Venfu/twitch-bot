@@ -1,0 +1,8 @@
+@if(announce) {
+<div class="wrap">
+  <div>
+    🔔 <span [appColorize]="announce.color">{{ announce.from }}</span> :
+    {{ announce.message }}
+  </div>
+</div>
+}

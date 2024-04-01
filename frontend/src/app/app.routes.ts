@@ -18,9 +18,27 @@ export const routes: Routes = [
             (m) => m.LastFollowerComponent
           ),
       },
-      // { path: 'last-announce', component: LastAnnounceComponent },
-      // { path: 'message', component: EventMessageComponent },
+      {
+        path: 'message',
+        loadComponent: () =>
+          import('./fragments/message/message.component').then(
+            (m) => m.MessageComponent
+          ),
+      },
+      {
+        path: 'last-announce',
+        loadComponent: () =>
+          import('./fragments/last-announce/last-announce.component').then(
+            (m) => m.LastAnnounceComponent
+          ),
+      },
+      {
+        path: 'animation',
+        loadComponent: () =>
+          import('./fragments/animation/animation.component').then(
+            (m) => m.AnimationComponent
+          ),
+      },
     ],
   },
-  // { path: 'animations', component: AnimationsComponent },
 ];

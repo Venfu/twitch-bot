@@ -36,7 +36,6 @@ export function subscribeToFollowEvents(sessionId: string) {
 }
 
 export function displayFollowEvents(data: any) {
-  console.log("LAAAAAAAA", data);
   if (data.metadata.subscription_type !== "channel.follow") return;
   vDatabaseFollowers.getFollowerById(data.payload.event.user_id).then((u) => {
     if (u) return; // if user exists in database

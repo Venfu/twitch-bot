@@ -6,7 +6,7 @@ import { Colors } from '../enum/colors';
   standalone: true,
 })
 export class ColorizeDirective implements OnInit {
-  @Input() appColorize: string = '';
+  @Input() appColorize!: string | undefined;
 
   constructor(private el: ElementRef) {}
 

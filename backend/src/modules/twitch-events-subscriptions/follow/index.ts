@@ -1,7 +1,7 @@
 import { vTwitchEvent } from "../../../core/twitch-events";
 import { FollowerInfo } from "@venfu-bot/shared";
 import { vDatabaseFollowers } from "./db-followers";
-import { displayFollowEvents, subscribeToFollowEvents } from "./event-follow";
+import { displayFollowEvents, subscribeToFollowEvents } from "./follow";
 
 let _vFollowers = {
   init(): Promise<boolean> {

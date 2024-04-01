@@ -1,5 +1,5 @@
 export interface EventToDisplay {
-  type: string;
+  type: 'none' | 'announce' | 'follow' | 'raid' | 'subscribe' | 'test';
   message?: string;
   from?: string;
   to?: string;

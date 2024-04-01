@@ -44,7 +44,6 @@ export function displaySubEvents(data: any) {
   vEventServer.pushEvent({
     type: "subscribe",
     from: data.payload.event.from_broadcaster_user_name,
-    other: { nbViewers: data.payload.event.viewers },
     timeout: 10000,
   });
 }
