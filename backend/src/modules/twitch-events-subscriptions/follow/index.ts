@@ -1,5 +1,5 @@
 import { vTwitchEvent } from "../../../core/twitch-events";
-import { FollowerInfo } from "../../../shared";
+import { FollowerInfo } from "@venfu-bot/shared";
 import { vDatabaseFollowers } from "./db-followers";
 import { displayFollowEvents, subscribeToFollowEvents } from "./event-follow";
 

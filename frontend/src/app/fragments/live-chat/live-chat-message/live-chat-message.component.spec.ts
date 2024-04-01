@@ -8,10 +8,10 @@ describe('LiveChatMessageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LiveChatMessageComponent ]
+      imports: [LiveChatMessageComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(LiveChatMessageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

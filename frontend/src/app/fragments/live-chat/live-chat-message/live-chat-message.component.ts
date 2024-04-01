@@ -1,12 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ChatMessage } from '../../../../../../shared/src';
+import { Component, Input } from '@angular/core';
+import { ChatMessage } from '@venfu-bot/shared';
+import { ColorizeDirective } from '../../../directives/colorize.directive';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-live-chat-message',
+  standalone: true,
+  imports: [CommonModule, ColorizeDirective],
   templateUrl: './live-chat-message.component.html',
-  styleUrls: ['./live-chat-message.component.scss'],
+  styleUrl: './live-chat-message.component.scss'
 })
-export class LiveChatMessageComponent implements OnInit {
+export class LiveChatMessageComponent {
   @Input() set message(m: ChatMessage) {
     if (!m) return;
     this.displayTimestamp(m);
@@ -16,6 +20,7 @@ export class LiveChatMessageComponent implements OnInit {
     this._userPicture = m.userPicture || `/assets/twitch/default-avatar.png`;
     this._badges = m.formatedBadges;
   }
+
   @Input() displayUser: boolean = true;
 
   _msg: string = '';
@@ -24,8 +29,6 @@ export class LiveChatMessageComponent implements OnInit {
   _userColor: string = '';
   _badges: string[] = [];
   _time: string = '';
-
-  ngOnInit(): void {}
 
   displayTimestamp(m: ChatMessage) {
     const date = new Date(parseInt(m.timestamp, 10));

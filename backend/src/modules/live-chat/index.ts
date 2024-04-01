@@ -1,6 +1,6 @@
 import { environment } from "../../environment/environment";
 import { WebSocketServer, WebSocket } from "ws";
-import { ChatMessage } from "../../shared";
+import { ChatMessage } from "@venfu-bot/shared";
 import request from "request";
 import { vOAuth } from "../../core/auth";
 import { vChat } from "../../core/chat";

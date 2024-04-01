@@ -1,22 +1,23 @@
 small.time {
-  font-size: 12px;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  font-weight: 600;
-  transform: translate(0, -50%);
-}
-
-.message-animation {
-  animation-name: received;
-  animation-duration: 0.7s;
-}
-
-@keyframes received {
-  0% {
-    transform: translate(-300%, -100%);
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    font-weight: 600;
+    transform: translate(0, -50%);
   }
-  100% {
-    transform: translate(0, 0);
+  
+  .message-animation {
+    animation-name: received;
+    animation-duration: 0.7s;
   }
-}
+  
+  @keyframes received {
+    0% {
+      transform: translate(-300%, -100%);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  

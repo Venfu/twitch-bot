@@ -3,6 +3,7 @@ import { Colors } from '../enum/colors';
 
 @Directive({
   selector: '[appColorize]',
+  standalone: true,
 })
 export class ColorizeDirective implements OnInit {
   @Input() appColorize: string = '';

@@ -2,7 +2,7 @@ import request from "request";
 import { environment } from "../../../environment/environment";
 import { vOAuth } from "../../../core/auth";
 import { vDataBase } from "../../../core/databases";
-import { Follower, FollowerInfo } from "../../../shared";
+import { Follower, FollowerInfo } from "@venfu-bot/shared";
 
 export let vDatabaseFollowers = {
   /**

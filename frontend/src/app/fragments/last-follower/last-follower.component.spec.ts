@@ -8,10 +8,10 @@ describe('LastFollowerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LastFollowerComponent ]
+      imports: [LastFollowerComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(LastFollowerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

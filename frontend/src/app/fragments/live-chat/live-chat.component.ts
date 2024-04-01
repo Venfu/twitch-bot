@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment.development';
-import { ChatMessage } from 'src/shared';
+import { environment } from '../../../environments/environment';
+import { ChatMessage } from '@venfu-bot/shared';
+import { LiveChatMessageComponent } from './live-chat-message/live-chat-message.component';
 
 @Component({
   selector: 'app-live-chat',
+  standalone: true,
+  imports: [LiveChatMessageComponent],
   templateUrl: './live-chat.component.html',
-  styleUrls: ['./live-chat.component.scss'],
+  styleUrl: './live-chat.component.scss',
 })
 export class LiveChatComponent implements OnInit {
   ws = new WebSocket(environment.URL_WEBSOCKET_LIVE_CHAT);

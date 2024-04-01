@@ -2,13 +2,12 @@
   class="main live-chat rounded-5 bg-light bg-opacity-10 fixed-top z-0"
 ></div>
 <div class="p-2">
-  <ng-container *ngFor="let msg of messages; let i = index">
-    <app-live-chat-message
-      [message]="msg"
-      *ngIf="msg"
-      [displayUser]="
-        messages[i - 1] ? msg.userName !== messages[i - 1].userName : true
-      "
-    ></app-live-chat-message>
-  </ng-container>
+  @for (msg of messages; track msg; let i = $index) {
+  <app-live-chat-message
+    [message]="msg"
+    [displayUser]="
+      messages[i - 1] ? msg.userName !== messages[i - 1].userName : true
+    "
+  />
+  }
 </div>

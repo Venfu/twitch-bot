@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
-import { EventToDisplay } from 'src/shared';
+import { environment } from '../../environments/environment';
+import { EventToDisplay } from '@venfu-bot/shared';
 
 @Injectable({
   providedIn: 'root',

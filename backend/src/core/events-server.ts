@@ -1,5 +1,5 @@
 import { WebSocket, WebSocketServer } from "ws";
-import { EventToDisplay } from "../shared";
+import { EventToDisplay } from "@venfu-bot/shared";
 
 let _eventsServer = {
   wss: new WebSocketServer({ port: 3001 }),

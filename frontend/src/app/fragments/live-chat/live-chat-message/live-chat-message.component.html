@@ -1,31 +1,34 @@
 <div class="position-relative">
-  <div class="position-absolute top-0 start-0 pt-4" *ngIf="displayUser">
-    <img
-      [src]="_userPicture"
-      alt="User Picture"
-      class="img-fluid rounded-circle"
-      width="50"
-      [ngStyle]="{ border: '1px solid' + _userColor }"
-    />
-  </div>
-  <div class="ps-5" [ngClass]="{ 'pt-4': displayUser }">
-    <ng-container *ngIf="displayUser">
+  @if (displayUser) {
+    <div class="position-absolute top-0 start-0 pt-4">
       <img
-        [src]="badge"
-        alt="badge"
-        *ngFor="let badge of _badges"
-        class="img-fluid rounded-circle ps-1"
-      />
-      <strong class="ps-2" [appColorize]="_userColor">{{ _userName }}</strong>
-    </ng-container>
-    <div class="ms-1 mt-2 position-relative">
-      <span
-        class="rounded-4 d-inline-block bg-primary py-1 px-2 bg-opacity-100 me-5 message-animation"
-        [innerHTML]="_msg"
-      ></span>
-      <small class="time">{{
-        _time
-      }}</small>
+        [src]="_userPicture"
+        alt="User Picture"
+        class="img-fluid rounded-circle"
+        width="50"
+        [ngStyle]="{ border: '1px solid' + _userColor }"
+        />
+      </div>
+    }
+    <div class="ps-5" [ngClass]="{ 'pt-4': displayUser }">
+      @if (displayUser) {
+        @for (badge of _badges; track badge) {
+          <img
+            [src]="badge"
+            alt="badge"
+            class="img-fluid rounded-circle ps-1"
+            />
+        }
+        <strong class="ps-2" [appColorize]="_userColor">{{ _userName }}</strong>
+      }
+      <div class="ms-1 mt-2 position-relative">
+        <span
+          class="rounded-4 d-inline-block bg-primary py-1 px-2 bg-opacity-100 me-5 message-animation"
+          [innerHTML]="_msg"
+        ></span>
+        <small class="time">{{
+          _time
+        }}</small>
+      </div>
     </div>
   </div>
-</div>

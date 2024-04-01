@@ -1,7 +1,7 @@
 import request from "request";
 import { environment } from "../environment/environment";
 import { vOAuth } from "./auth";
-import { StreamInformations } from "../shared";
+import { StreamInformations } from "@venfu-bot/shared";
 
 const URL_API_GET_STREAM = "https://api.twitch.tv/helix/streams";
 

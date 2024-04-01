@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Colors } from 'src/app/enum/colors';
-import { BackendService } from 'src/app/services/backend.service';
-import { EventsService } from 'src/app/services/events.service';
-import { EventToDisplay } from 'src/shared';
+import { EventToDisplay } from '@venfu-bot/shared';
+import { Colors } from '../../enum/colors';
+import { BackendService } from '../../services/backend.service';
+import { EventsService } from '../../services/events.service';
+import { ColorizeDirective } from '../../directives/colorize.directive';
 
 @Component({
   selector: 'app-last-follower',
+  standalone: true,
+  imports: [ColorizeDirective],
   templateUrl: './last-follower.component.html',
-  styleUrls: ['./last-follower.component.scss'],
+  styleUrl: './last-follower.component.scss'
 })
 export class LastFollowerComponent implements OnInit {
   lastFollower: string = '';

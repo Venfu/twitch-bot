@@ -3,7 +3,7 @@ import { vOAuth } from "./core/auth";
 import { vDataBase } from "./core/databases";
 import { vEventServer } from "./core/events-server";
 import { vTwitchEvent } from "./core/twitch-events";
-import { StreamInformations } from "./shared";
+import { StreamInformations } from "@venfu-bot/shared";
 import { vStreamInformations } from "./core/stream-informations";
 import { vLiveChat } from "./modules/live-chat";
 import { vChat } from "./core/chat";
