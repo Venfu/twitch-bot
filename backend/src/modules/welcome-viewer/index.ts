@@ -18,7 +18,7 @@ let _vWelcomeViewer: any = {
             }
           });
         },
-        permission: "vewer",
+        permission: "viewer",
         regex: new RegExp(""),
       });
       vDatabaseWelcomeViewer.init().then(() => {

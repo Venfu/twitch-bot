@@ -11,7 +11,7 @@ let _vCustomCmd = {
       do: () => {
         vChat.sendMessage(cmd());
       },
-      permission: "vewer",
+      permission: "viewer",
     });
 
     vCmd.cmds.push({
@@ -20,7 +20,7 @@ let _vCustomCmd = {
       do: (msg: string) => {
         vChat.sendMessage(rollDice(+msg.substring(4)));
       },
-      permission: "vewer",
+      permission: "viewer",
     });
 
     vCmd.cmds.push({
@@ -29,7 +29,7 @@ let _vCustomCmd = {
       do: (msg: string, context: any) => {
         vChat.sendMessage(hug(context["display-name"], msg.substring(5)));
       },
-      permission: "vewer",
+      permission: "viewer",
     });
 
     vCmd.cmds.push({
@@ -38,7 +38,7 @@ let _vCustomCmd = {
       do: () => {
         vChat.sendMessage(ca());
       },
-      permission: "vewer",
+      permission: "viewer",
     });
 
     vCmd.cmds.push({
@@ -49,7 +49,7 @@ let _vCustomCmd = {
           vChat.sendMessage(url);
         });
       },
-      permission: "vewer",
+      permission: "viewer",
     });
 
     vCmd.cmds.push({

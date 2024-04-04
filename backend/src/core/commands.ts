@@ -44,5 +44,5 @@ interface Command {
   name: string;
   regex: RegExp;
   do: (msg: string, context: any, self: any, target: string) => void;
-  permission: "vewer" | "moderator" | "broadcaster";
+  permission: "viewer" | "moderator" | "broadcaster";
 }
