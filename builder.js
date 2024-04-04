@@ -7,9 +7,7 @@ if (fs.existsSync("dist")) {
 }
 fs.mkdirSync("./dist");
 
-fs.existsSync("./dist/bundle") || fs.mkdirSync("./dist/bundle");
-
-fs.cpSync("./backend/dist", "./dist/backend", { recursive: true });
+fs.mkdirSync("./dist/bundle");
 
 fs.cpSync("./frontend/dist/frontend/browser", "./dist/bundle/frontend", {
   recursive: true,

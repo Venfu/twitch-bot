@@ -94,13 +94,13 @@ app.get("/connected", (req: Request, res: Response) => {
 fs.existsSync("./public") || fs.mkdirSync("./public");
 app.use("/public", express.static("./public"));
 
-app.get("/change", (req: Request, res: Response) => {
+app.get("/test-event", (req: Request, res: Response) => {
   vEventServer.pushEvent({
     type: "test",
     message: "Test",
     timeout: 5000,
   });
-  res.send("ok");
+  res.send("Test sent !");
 });
 
 // START APP

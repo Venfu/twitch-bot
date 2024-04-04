@@ -1,6 +1,6 @@
 "use strict";
 
-require("./dist/backend/app.js");
+require("./backend/dist/app.js");
 const express = require("express");
 const app = express();
 const port = 80;
