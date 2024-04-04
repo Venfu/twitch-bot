@@ -1,3 +1,4 @@
+import fs from "fs";
 import express, { Application, Request, Response } from "express";
 import { vOAuth } from "./core/auth";
 import { vDataBase } from "./core/databases";
@@ -90,7 +91,8 @@ app.get("/connected", (req: Request, res: Response) => {
   res.send({ connected: !!vOAuth.oAuthInfo.access_token });
 });
 
-app.use("/public", express.static(__dirname + "/../public"));
+fs.existsSync("./public") || fs.mkdirSync("./public");
+app.use("/public", express.static("./public"));
 
 app.get("/change", (req: Request, res: Response) => {
   vEventServer.pushEvent({

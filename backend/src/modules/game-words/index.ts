@@ -51,7 +51,7 @@ let _vWords = {
         }
       }
 
-      fs.readFile(__dirname + "/../../assets/words.txt", (err, data) => {
+      fs.readFile("./assets/words.txt", (err, data) => {
         words = data.toString().split("\r\n");
         res();
       });

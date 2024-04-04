@@ -5,8 +5,8 @@ import request from "request";
 
 const URL_TWITCH_AUTHORIZE = "https://id.twitch.tv/oauth2/authorize";
 const URL_TWITCH_TOKEN = "https://id.twitch.tv/oauth2/token";
-environment.URL_CALLBACK_BASE = environment.URL_CALLBACK_BASE || 'http://localhost:3000'
-const URL_CALLBACK = `${environment.URL_CALLBACK_BASE}/auth/twitch/callback`;
+const URL_CALLBACK_BASE = 'http://localhost:3000'
+const URL_CALLBACK = `http://localhost:3000/auth/twitch/callback`;
 
 export let vOAuth = {
   oAuthInfo: {
@@ -59,7 +59,7 @@ export let vOAuth = {
           uri: URL_TWITCH_TOKEN,
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: encodeURI(
-            `client_id=${environment.TWITCH_CLIENT_ID}&client_secret=${environment.TWITCH_SECRET}&code=${code}&grant_type=authorization_code&redirect_uri=${environment.URL_CALLBACK_BASE}`
+            `client_id=${environment.TWITCH_CLIENT_ID}&client_secret=${environment.TWITCH_SECRET}&code=${code}&grant_type=authorization_code&redirect_uri=${URL_CALLBACK_BASE}`
           ),
         },
         (err, req, data) => {

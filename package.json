@@ -6,11 +6,20 @@
   "scripts": {
     "postinstall": "concurrently \"cd backend && npm i\" \"cd frontend && npm i\" \"cd shared && npm i\"",
     "start": "concurrently \"cd backend && npm start\" \"cd frontend && npm start\"",
-    "build": "concurrently \"cd backend && npm run build\" \"cd frontend && npm run build\" \"cd shared && npm build\""
+    "build": "npm run build:all && npm run build:bundle",
+    "build:front": "cd frontend && npm run build",
+    "build:back": "cd backend && npm run build",
+    "build:shared": "cd shared && npm run build",
+    "build:all": "concurrently \"npm run build:front\" \"npm run build:back\" \"npm run build:shared\"",
+    "build:bundle": "node ./builder.js",
+    "postbuild": "node ./builder.js"
   },
   "author": "Venfu",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^8.2.1"
+    "@angablue/exe": "^2.1.2",
+    "archiver": "^7.0.1",
+    "concurrently": "^8.2.1",
+    "express": "^4.19.2"
   }
 }
