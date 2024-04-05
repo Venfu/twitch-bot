@@ -1,0 +1,10 @@
+.container {
+    height: 100vh;
+    .jumbotron {
+        background-color: rgba(0, 0, 0, 0.33);
+        box-shadow:  rgba(0, 0, 0, 0.33) 5px 5px 10px 0px;
+        padding: 20px;
+        border-radius: 25px;
+        width: 75vw;
+    }
+}

@@ -8,3 +8,6 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 // Then add additional custom code here
+* {
+  color: --bs-gray-100;
+}

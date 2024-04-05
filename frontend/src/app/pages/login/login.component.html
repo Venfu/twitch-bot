@@ -1,2 +1,24 @@
-<button class="btn btn-primary" (click)="initLogin()">Login</button>
-<a [routerLink]="['/documentation']" class="btn btn-secondary">Documentation</a>
+<app-background></app-background>
+<div class="container d-flex align-items-center justify-content-center">
+  <div class="jumbotron text-center">
+    <h1 class="display-4">Connexion</h1>
+    <hr class="mb-5" />
+
+    <h2 class="h4">Connexion à votre compte Twitch</h2>
+    <button
+      type="button"
+      class="btn btn-primary btn-lg my-2"
+      (click)="initLogin()"
+    >
+      Login
+    </button>
+    <p class="mt-3">
+      <small>Verifiez bien que vous vous connectez au site twitch.tv</small>
+    </p>
+    <hr class="mt-5" />
+    <p class="text-end">
+      Pour savoir comment configurer le bot, rendez-vous
+      <a [routerLink]="['/documentation']" class="link">ici</a>
+    </p>
+  </div>
+</div>
