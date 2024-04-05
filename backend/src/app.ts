@@ -22,8 +22,7 @@ app.get("/", (req: Request, res: Response) => {
   if (!vOAuth.oAuthInfo.access_token) {
     vOAuth.initOAuth(res);
   } else {
-    res.send("");
-    // res.redirect(environment.URL_FRONTEND);
+    res.redirect("http://localhost");
   }
 });
 

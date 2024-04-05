@@ -1,44 +1,27 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
-    path: 'fragments',
-    children: [
-      {
-        path: 'live-chat',
-        loadComponent: () =>
-          import('./fragments/live-chat/live-chat.component').then(
-            (m) => m.LiveChatComponent
-          ),
-      },
-      {
-        path: 'last-follower',
-        loadComponent: () =>
-          import('./fragments/last-follower/last-follower.component').then(
-            (m) => m.LastFollowerComponent
-          ),
-      },
-      {
-        path: 'message',
-        loadComponent: () =>
-          import('./fragments/message/message.component').then(
-            (m) => m.MessageComponent
-          ),
-      },
-      {
-        path: 'last-announce',
-        loadComponent: () =>
-          import('./fragments/last-announce/last-announce.component').then(
-            (m) => m.LastAnnounceComponent
-          ),
-      },
-      {
-        path: 'animation',
-        loadComponent: () =>
-          import('./fragments/animation/animation.component').then(
-            (m) => m.AnimationComponent
-          ),
-      },
-    ],
+    path: 'admin',
+    canActivate: [authGuard],
+    loadChildren: () =>
+      import('./pages/admin/admin.routes').then((m) => m.routes),
   },
+  {
+    path: 'fragments',
+    loadChildren: () =>
+      import('./fragments/fragments.routes').then((m) => m.routes),
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.component').then((m) => m.LoginComponent),
+  },
+  {
+    path: 'documentation',
+    loadComponent: () =>
+      import('./pages/doc/doc.component').then((m) => m.DocComponent),
+  },
+  { path: '', redirectTo: '/admin', pathMatch: 'full' },
 ];
