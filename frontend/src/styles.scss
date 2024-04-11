@@ -13,10 +13,11 @@ $theme-colors: (
   "warning": #ffc107,
   "danger": #dc3545,
   "light": #f8f9fa,
-  "dark": #343a40
+  "dark": #343a40,
 );
 
 @import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 
 // Then add additional custom code here
 * {
